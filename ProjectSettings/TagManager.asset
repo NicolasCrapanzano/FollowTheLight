@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - WoodFire
+  - FlintSteel
+  - Sticks
+  - Text
+  - Pedestal
+  - PuzzleCamera
+  - PuzzleTorch
+  - PuzzleBlock
+  - PuzzleObj
+  - Puzzle2
+  - TheEnd
+  - TorchStand
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Child
+  - FrontStuff
+  - Cursor
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1342471671
+    locked: 0
+  - name: FrontWalls
+    uniqueID: 1867367911
+    locked: 0

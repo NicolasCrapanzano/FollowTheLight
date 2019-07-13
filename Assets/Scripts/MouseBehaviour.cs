@@ -1,0 +1,65 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MouseBehaviour : MonoBehaviour
+{
+    // Start is called before the first frame update
+    private Vector2 _mousePos;
+    private SteelFire _sf;
+    private GameManager _gm;
+    private bool _objInHand;
+    private bool _finalPuzzle;
+    void Start()
+    {
+        _finalPuzzle = false;
+        _gm = FindObjectOfType<GameManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Cursor.visible == true)
+        {
+            Cursor.visible = false;
+        }
+        _mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = _mousePos;
+    }
+    private void ChildrenState()
+    {
+        _objInHand = false;
+    }
+    private void EnableFinalPuzzle()
+    {
+        _finalPuzzle = true;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("FlintSteel"))
+        {
+            _sf = collision.GetComponent<SteelFire>();
+            Debug.Log(collision);
+            if(Input.GetMouseButtonDown(0)&&_objInHand==false)
+            {
+                Debug.Log("picked");
+                _sf._glow.SetActive(false);
+                collision.gameObject.transform.SetParent(this.gameObject.transform);
+                _objInHand = true;
+            }
+        }
+        
+            if (collision.CompareTag("PuzzleObj"))
+            {
+                if (_finalPuzzle == true && Input.GetMouseButtonDown(0) && _objInHand == false)
+                {
+                    collision.gameObject.transform.SetParent(this.gameObject.transform);
+                    _objInHand = true;
+                }else if(_finalPuzzle == false && Input.GetMouseButtonDown(0))
+                {
+                    _gm.ChangeText("I dont know how to use this for now . . .", 3);
+                }
+            }
+        
+    }
+}
