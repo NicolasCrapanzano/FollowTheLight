@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
         _gameStarted = true;
         _plAnimator.SetBool("GameStarted", _gameStarted);
     }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     void Update()
     {
         if (_gameStarted == true)

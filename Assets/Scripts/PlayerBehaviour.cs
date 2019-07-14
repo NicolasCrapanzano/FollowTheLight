@@ -103,6 +103,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void LeaveTorch()//leave the torch when leaving the cave
     {
+        _gm.ChangeText("Finally free . . .",3);
         _armEmpty.SetActive(true);
         _armWTorch.SetActive(false);
         _anim.SetInteger("LeaveTorch", 0);
@@ -136,17 +137,24 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
         }
-        if (_secondPuzzleEnded==true && _torchLeft == false)//only if  the last puzzle is completed
+        if (collision.CompareTag("TorchStand"))//start leaveTorch animation 
         {
-            
-            if (collision.CompareTag("TorchStand"))//start leaveTorch animation 
+            if (_secondPuzzleEnded == true && _torchLeft == false)//only if  the last puzzle is completed
             {
                 _torchStand = collision.GetComponent<TorchStand>();
-                _anim.SetInteger("LeaveTorch",1);
+                _anim.SetInteger("LeaveTorch", 1);
                 _torchLeft = true;
-                
+            }
+            else
+            {
+                _gm.ChangeText("This looks like the exit, so close . . .", 3);
             }
         }
+        
+        
+            
+            
+        
     }
     
     private void OnTriggerExit2D(Collider2D collision)
