@@ -28,7 +28,7 @@ public class CameraControl : MonoBehaviour
         }else
         {
             _start = _player.GetComponent<PlayerBehaviour>().animEnd;
-            Debug.Log(_start);
+            //Debug.Log(_start);
         }
     }
 }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string[] _words,_words2;
     private int _count, _puzzleSolved,_secondPuzzle,contadorsito,_idTxtProg;
-    private float _timer;
+    private float _timer, _vanishSpd;
     void Start()
     {
         _gameStarted = false;
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         if (_gameStarted == true)
         {
-            Debug.Log("game started");
+            
             if (_textVanish == true)
             {
                 TextVanish();
@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeText(string word , int id)//paso de parametro 1 la palabra 2 la seccion de palabras 0=primer puzzle (fogata) 1=  
     {
+        float temp = word.Length * word.Length;
+        _vanishSpd = 0.07f + word.Length / temp;
+        _character.color = new Color32(255, 255, 255, 255);
         if (id == 0 && _count <= _words.Length)
         {
             _character.text = _words[_count];
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
     {
         if (_character.color.a > 0)
         {
-            _character.color = _character.color - new Color(0, 0, 0, 0.005f);
+            _character.color = _character.color - new Color(0, 0, 0, _vanishSpd)*Time.deltaTime;
         } else
         {
             _character.text = " ";
@@ -145,7 +148,7 @@ public class GameManager : MonoBehaviour
         {
 
             contadorsito = contadorsito +1;
-            Debug.Log(contadorsito);
+            
 
             if(contadorsito >= 200)
             {

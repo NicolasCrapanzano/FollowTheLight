@@ -54,10 +54,10 @@ public class MouseBehaviour : MonoBehaviour
         if(collision.CompareTag("FlintSteel"))
         {
             _sf = collision.GetComponent<SteelFire>();
-            Debug.Log(collision);
+            
             if(Input.GetMouseButtonDown(0)&&_objInHand==false)
             {
-                Debug.Log("picked");
+                
                 _sf._glow.SetActive(false);
                 collision.gameObject.transform.SetParent(this.gameObject.transform);
                 _objInHand = true;
