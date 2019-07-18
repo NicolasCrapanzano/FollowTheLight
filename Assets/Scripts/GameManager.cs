@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _gameStarted = true;
+        _mouse.SendMessage("ChangeLayer", 1);
         _plAnimator.SetBool("GameStarted", _gameStarted);
     }
     public void ExitGame()

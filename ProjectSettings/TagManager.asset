@@ -16,6 +16,9 @@ TagManager:
   - Puzzle2
   - TheEnd
   - TorchStand
+  - Flag2
+  - Flag1
+  - Cloud
   layers:
   - Default
   - TransparentFX

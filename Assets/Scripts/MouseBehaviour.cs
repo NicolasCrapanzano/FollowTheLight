@@ -8,12 +8,15 @@ public class MouseBehaviour : MonoBehaviour
     private Vector2 _mousePos;
     private SteelFire _sf;
     private GameManager _gm;
+    private SpriteRenderer _sr;
     private bool _objInHand;
     private bool _finalPuzzle;
     void Start()
     {
         _finalPuzzle = false;
         _gm = FindObjectOfType<GameManager>();
+        _sr = GetComponent<SpriteRenderer>();
+        ChangeLayer(0);
     }
 
     // Update is called once per frame
@@ -29,6 +32,18 @@ public class MouseBehaviour : MonoBehaviour
     private void ChildrenState()
     {
         _objInHand = false;
+    }
+    private void ChangeLayer(int id)
+    {
+        if (id == 0)
+        {
+            _sr.sortingLayerName = "FrontWalls";
+            _sr.sortingOrder = 11;
+        }else if (id == 1)
+        {
+            _sr.sortingLayerName = "Default";
+            _sr.sortingOrder = 5;
+        }
     }
     private void EnableFinalPuzzle()
     {
