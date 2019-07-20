@@ -5,6 +5,7 @@ using UnityEngine;
 public class End : MonoBehaviour
 {
     private PlayerBehaviour _pl;
+    private MouseBehaviour _mouse;
     private GameManager _gm;
     [SerializeField]
     private GameObject _endScreen;
@@ -15,6 +16,7 @@ public class End : MonoBehaviour
         _isEndScreenOn = false;
         _pl = FindObjectOfType<PlayerBehaviour>();
         _gm = FindObjectOfType<GameManager>();
+        _mouse = FindObjectOfType<MouseBehaviour>();
     }
 
     
@@ -34,6 +36,7 @@ public class End : MonoBehaviour
         {
             Debug.Log("ganaste bro");
             _isEndScreenOn = true;
+            _mouse.SendMessage("ChangeLayer",1);
             _timer = Time.time + 3;
         }
     }

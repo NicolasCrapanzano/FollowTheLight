@@ -16,7 +16,7 @@ public class MouseBehaviour : MonoBehaviour
         _finalPuzzle = false;
         _gm = FindObjectOfType<GameManager>();
         _sr = GetComponent<SpriteRenderer>();
-        ChangeLayer(0);
+        ChangeLayer(1);
     }
 
     // Update is called once per frame
@@ -35,11 +35,12 @@ public class MouseBehaviour : MonoBehaviour
     }
     private void ChangeLayer(int id)
     {
-        if (id == 0)
+        Debug.Log(id);
+        if (id == 1)
         {
             _sr.sortingLayerName = "FrontWalls";
             _sr.sortingOrder = 11;
-        }else if (id == 1)
+        }else if (id == 2)
         {
             _sr.sortingLayerName = "Default";
             _sr.sortingOrder = 5;
